@@ -22,6 +22,11 @@ spotifyApi.clientCredentialsGrant().then(
     }
 );
 
+// Root route
+app.get('/', function (req, res) {
+    res.send('<h1>Welcome to the Spotify API Integration!</h1><p>Use the following routes:</p><ul><li><a href="/searchLove">Search for "love"</a></li><li><a href="/search?searchterm=hello">Search for a custom term</a></li><li><a href="/topTracks/{artistId}">Get top tracks for an artist (replace {artistId})</a></li><li><a href="/relatedArtists/{artistId}">Get related artists (replace {artistId})</a></li><li><a href="/searchAPI?searchterm=hello">Get simplified JSON results</a></li></ul>');
+});
+
 // Basic search route for hardcoded term
 app.get('/searchLove', function (req, res) {
     getTracks('love', res);
