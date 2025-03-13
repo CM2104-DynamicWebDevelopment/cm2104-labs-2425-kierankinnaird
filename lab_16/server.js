@@ -13,12 +13,16 @@ app.get('/', function(req, res) {
 io.on('connection', function(socket){
     console.log('a user connected');
 
-    // ✅ FIX: Move socket.on('disconnect') inside the connection event
     socket.on('disconnect', function(){
         console.log('user disconnected');
     });
+
+    socket.on('chat message',function(msg){
+        console.log('message: ' + msg);
+    })
 });
 
 http.listen(8080, function(){
     console.log('listening on port 8080');
 });
+
