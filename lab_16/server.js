@@ -10,15 +10,15 @@ app.get('/', function(req, res) {
     res.render('pages/index');
 });
 
-io.on('connection', function(socket){
-    console.log('a user connected');
+io.on('connection', function (socket) {
+    console.log('A user connected');
 
-    socket.on('disconnect', function(){
-        console.log('user disconnected');
+    socket.on('disconnect', function () {
+        console.log('User disconnected');
     });
 
-    socket.on('chat message',function(msg){
-        io.emit('chat message', msg);
+    socket.on('chat message', function (data) {
+        io.emit('chat message', data); // Broadcast the username + message
     });
 });
 
