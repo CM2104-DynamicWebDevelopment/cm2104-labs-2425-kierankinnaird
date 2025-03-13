@@ -18,8 +18,9 @@ io.on('connection', function(socket){
     });
 
     socket.on('chat message',function(msg){
-        console.log('message: ' + msg);
-    })
+        $('#messages').append("<li>"+msg+"</li>");
+        window.scrollTo(0, document.body.scrollHeight);
+    });
 });
 
 http.listen(8080, function(){
